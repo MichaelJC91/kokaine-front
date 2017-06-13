@@ -1,27 +1,26 @@
-.App-logo {
-  color: red; }
+.landing-page-container {
+  height: 100%;
+  background: #de6161;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2657eb, #de6161);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2657eb, #de6161);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
-.App {
+.landing-page-logo h1 {
+  font-size: 20rem;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.7); }
+
+.landing-page-component-wrapper {
+  padding: 65px 50px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  width: 450px;
+  max-width: 100%; }
+
+.signinFormContainer h2 {
   text-align: center; }
 
-.test {
-  background: red; }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px; }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white; }
-
-.App-intro {
-  font-size: large; }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
+body, html, #root, [data-reactroot], .homeBodyClass {
+  height: 100%; }
