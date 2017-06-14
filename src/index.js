@@ -14,7 +14,8 @@ import './index.css';
 import { Router, Switch, Route } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 import history from './config/history'
-import { AUTH_USER } from './actions/types';
+import { AUTH_USER, UNAUTH_USER } from './actions/types';
+import jwtDecode from 'jwt-decode';
 
 // Global Store
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -22,11 +23,20 @@ const store = createStoreWithMiddleware(reducers);
 
 // JWT Token
 const token = localStorage.getItem('token');
+const jwtDecoded = jwtDecode(token);
+
+// JWT Expiry
+const tokenExpiry = jwtDecoded.exp < Date.now() / 1000;
 
 // Check to see if JWT exists
 if(token) {
   // Update authentication state
   store.dispatch({ type: AUTH_USER });
+}
+
+if (tokenExpiry) {
+  // If JWT has expired set authentication state to false
+  store.dispatch({ type: UNAUTH_USER });
 }
 
 ReactDOM.render(

@@ -37,7 +37,8 @@
 
 .dashboard-sidebar {
   padding: 0;
-  box-shadow: 9px -3px 10px -12px rgba(0, 0, 0, 0.4); }
+  box-shadow: 9px -3px 10px -12px rgba(0, 0, 0, 0.4);
+  border-right: 1px solid rgba(240, 240, 240, 0.5); }
   .dashboard-sidebar .list-group-item {
     border-radius: 0;
     border-top: 0;
@@ -73,6 +74,9 @@
     background: rgba(240, 240, 240, 0.5); }
   .dashboard-sidebar .list-group-item {
     border-bottom-color: rgba(240, 240, 240, 0.5); }
+
+.dashboard-main-section {
+  background: #dfeaf0; }
 
 body, html, #root, [data-reactroot], .homeBodyClass {
   height: 100%; }

@@ -17,7 +17,7 @@ export function signinUser(values) {
         localStorage.setItem('token', response.data.token);
 
         // - Redirect to special route
-        history.push('/dashboard/main');
+        history.push('/dashboard');
 
       })
       .catch(() => {
@@ -40,7 +40,7 @@ export function signupUser(values) {
         localStorage.setItem('token', response.data.token);
 
         // - Redirect to special route
-        history.push('/dashboard/main');
+        history.push('/dashboard');
 
       })
       .catch(error => {

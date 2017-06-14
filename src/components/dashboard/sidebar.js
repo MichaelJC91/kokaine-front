@@ -6,7 +6,7 @@ class Sidbar extends Component {
     return(
       <div className="col-md-2 dashboard-sidebar">
         <ul className="list-group">
-          <NavLink activeClassName="selected" to="/dashboard/main"><li className="list-group-item"><i className="fa fa-home" aria-hidden="true"></i>Dashboard</li></NavLink>
+          <NavLink activeClassName="selected" exact to="/dashboard"><li className="list-group-item"><i className="fa fa-home" aria-hidden="true"></i>Dashboard</li></NavLink>
           <NavLink activeClassName="selected" to="/dashboard/organisations"><li className="list-group-item"><i className="fa fa-building-o" aria-hidden="true"></i>Organisations</li></NavLink>
           <NavLink activeClassName="selected" to="/dashboard/tasks"><li className="list-group-item"><i className="fa fa-thumb-tack" aria-hidden="true"></i>Tasks</li></NavLink>
           <NavLink activeClassName="selected" to="/dashboard/contacts"><li className="list-group-item"><i className="fa fa-users" aria-hidden="true"></i>Contacts</li></NavLink>

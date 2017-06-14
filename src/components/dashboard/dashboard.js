@@ -19,15 +19,15 @@ export default class Dashboard extends Component {
         </div>
         <div className="row dashboard-main-row">
           <Sidebar />
-          <div className="col-md-10">
+          <div className="col-md-10 dashboard-main-section">
             <Router history={ history }>
               <Switch>
-                <Route path="/dashboard/main" component={ MainDashboard } />
                 <Route path="/dashboard/organisations" component={ Organisations } />
                 <Route path="/dashboard/tasks" component={ Tasks } />
                 <Route path="/dashboard/contacts" component={ Contacts } />
                 <Route path="/dashboard/charts" component={ Charts } />
                 <Route path="/dashboard/user" component={ Account } />
+                <Route path="/dashboard" component={ MainDashboard } />
               </Switch>
             </Router>
           </div>

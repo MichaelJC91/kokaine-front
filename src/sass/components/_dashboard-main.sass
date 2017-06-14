@@ -1,4 +1,5 @@
 @import "../borders/_shadows.sass"
+@import "../borders/_colors.sass"
 @import "../typography/_colors.sass"
 @import "../backgrounds/_colors.sass"
 
@@ -8,6 +9,7 @@
 .dashboard-sidebar
   padding: 0
   box-shadow: $light-black-box-shadow-right-only
+  border-right: 1px solid $light-grey-border
   .list-group-item
     border-radius: 0
     border-top: 0
@@ -35,3 +37,6 @@
     background: $dashboard-sidebar-background
   & .list-group-item
     border-bottom-color: $dashboard-sidebar-background
+
+.dashboard-main-section
+  background: #dfeaf0
