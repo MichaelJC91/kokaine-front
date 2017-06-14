@@ -33,7 +33,7 @@ class SignUpForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="signinFormContainer">
+      <div className="signupFormContainer">
         <h2>SIGNUP</h2>
         <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
           <Field
