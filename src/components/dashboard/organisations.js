@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllOrgs } from '../../actions/organisations/index';
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import $ from 'jquery';
-import matchHeight from 'jquery-match-height';
+// import matchHeight from 'jquery-match-height';
 
 class Organisations extends Component {
 
@@ -29,12 +30,13 @@ class Organisations extends Component {
               <h5>{ org.name }</h5>
             </div>
             <div className="dashboard-card-location-wrapper">
-              <h6>Melbourne, Australia</h6>
+              <h6><i className="fa fa-map-marker" aria-hidden="true"></i>Melbourne, Australia</h6>
             </div>
             <div className="text-left dashboard-card-contact-info">
-              <p><a href={ `tel:${org.phone}` }>{ org.phone }</a></p>
-              <p><a href={ `tel:${org.phone}` }>{ org.email }</a></p>
-              <p><a href={ org.assets[0].name }>{ org.assets[0].name }</a></p>
+              <p><i className="fa fa-mobile" aria-hidden="true"></i><a href={ `tel:${org.phone}` }>{ org.phone }</a></p>
+              <p><i className="fa fa-envelope" aria-hidden="true"></i><a href={ `tel:${org.phone}` }>{ org.email }</a></p>
+              <p><i className="fa fa-globe" aria-hidden="true"></i><a href={ org.assets[0].name }>{ org.assets[0].name }</a></p>
+              <Link className="btn btn-secondary btn-sm" to="#">Add Task</Link>
             </div>
           </div>
         </div>
@@ -44,8 +46,15 @@ class Organisations extends Component {
 
   render() {
     return (
-      <div className="row">
-        { this.renderCardLayout() }
+      <div>
+        <div className="row">
+          <div className="col-md-12">
+            <Link className="btn btn-primary mb-3" to="/dashboard/organisation/new">Add Organisation</Link>
+          </div>
+        </div>
+        <div className="row">
+          { this.renderCardLayout() }
+        </div>
       </div>
     )
   }

@@ -27,7 +27,7 @@ export default class Dashboard extends Component {
                 <Route path="/dashboard/contacts" component={ Contacts } />
                 <Route path="/dashboard/charts" component={ Charts } />
                 <Route path="/dashboard/user" component={ Account } />
-                <Route path="/dashboard" component={ MainDashboard } />
+                <Route exact path="/dashboard" component={ MainDashboard } />
               </Switch>
             </Router>
           </div>
