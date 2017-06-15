@@ -2,10 +2,11 @@ import axios from 'axios';
 import { GET_ALL_ORGANISATIONS } from '../types';
 import history from '../../config/history';
 const ROOT_URL = 'http://kokaine.staging.bid';
-const TOKEN = localStorage.getItem('token');
 
 export function getAllOrgs() {
   return function(dispatch) {
+
+    const TOKEN = localStorage.getItem('token');
 
     axios.get(`${ROOT_URL}/api/organisations?token=${TOKEN}`)
     .then((response) => {

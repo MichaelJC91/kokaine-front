@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.16.2",
     "history": "^4.6.1",
+    "jquery": "^3.2.1",
+    "jquery-match-height": "^0.7.2",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",

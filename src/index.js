@@ -23,20 +23,24 @@ const store = createStoreWithMiddleware(reducers);
 
 // JWT Token
 const token = localStorage.getItem('token');
-const jwtDecoded = jwtDecode(token);
-
-// JWT Expiry
-const tokenExpiry = jwtDecoded.exp < Date.now() / 1000;
 
 // Check to see if JWT exists
 if(token) {
-  // Update authentication state
-  store.dispatch({ type: AUTH_USER });
-}
 
-if (tokenExpiry) {
-  // If JWT has expired set authentication state to false
-  store.dispatch({ type: UNAUTH_USER });
+  // If token exists decode
+  // And set token expiry
+  const jwtDecoded = jwtDecode(token);
+  const tokenExpiry = jwtDecoded.exp < Date.now() / 1000;
+
+  if (tokenExpiry) {
+    // If JWT has expired set authentication state to false
+    store.dispatch({ type: UNAUTH_USER });
+  } else {
+
+    // Update authentication state
+    store.dispatch({ type: AUTH_USER });
+
+  }
 }
 
 ReactDOM.render(

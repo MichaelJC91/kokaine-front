@@ -2,6 +2,7 @@
 @import "../borders/_colors.sass"
 @import "../typography/_colors.sass"
 @import "../backgrounds/_colors.sass"
+@import "../backgrounds/_dashboard-cards.sass"
 
 .dashboard-main-row
   height: 100%
@@ -40,3 +41,40 @@
 
 .dashboard-main-section
   background: #dfeaf0
+  padding-top: 15px
+
+.dashboard-card-layout
+  h1, h5, h6
+    margin: 0
+  margin-bottom: 15px
+  background-color: $white
+  box-shadow: $light-black-box-shadow
+  .dashboard-card-name-wrapper
+    background: $dashboard-background
+    padding: 30px 10px
+    color: $white
+    h1
+      padding: 30px
+      background: $white
+      display: inline-block
+      border-radius: 50%
+      margin-bottom: 20px
+      box-shadow: 0px 0px 15px #3a3a3a
+      font-weight: 600
+      color: darken($dashboard-background, 10%)
+    h5
+      opacity: 0.9
+      font-weight: 600
+  .dashboard-card-location-wrapper
+    padding: 10px
+    background: darken($dashboard-background, 20%)
+    color: $white
+  .dashboard-card-contact-info
+    padding: 30px
+    padding-bottom: 20px
+  p
+    border-bottom: 2px solid lighten($light-black-border, 50%)
+    padding-bottom: 5px
+    a
+      color: inherit
+      text-decoration: none
