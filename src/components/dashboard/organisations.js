@@ -13,11 +13,21 @@ class Organisations extends Component {
   }
 
   companyBadge(name) {
-    return name.split(' ')
-          .slice(0, 2)
-          .join(' ')
-          .match(/\b(\w)/g)
-          .join('');
+    let first = name.split(' ')
+                    .slice(0, 1);
+
+    let last = name.split(' ')
+                    .slice(-1);
+
+    let fullName = [ ...first, ...last ];
+
+    if( fullName.length >= 2 ) {
+
+      return fullName.join(' ')
+                     .match(/\b(\w)/g)
+                     .join('');
+    }
+    return first.charAt(0).toUpperCase()
   }
 
   renderCardLayout() {
@@ -35,7 +45,7 @@ class Organisations extends Component {
             <div className="text-left dashboard-card-contact-info">
               <p><i className="fa fa-mobile" aria-hidden="true"></i><a href={ `tel:${org.phone}` }>{ org.phone }</a></p>
               <p><i className="fa fa-envelope" aria-hidden="true"></i><a href={ `tel:${org.phone}` }>{ org.email }</a></p>
-              <p><i className="fa fa-globe" aria-hidden="true"></i><a href={ org.assets[0].name }>{ org.assets[0].name }</a></p>
+              <p><i className="fa fa-globe" aria-hidden="true"></i><a target="_blank" href={ `http://${org.assets[0].name}` }>{ org.assets[0].name }</a></p>
               <Link className="btn btn-secondary btn-sm" to="#">Add Task</Link>
             </div>
           </div>
