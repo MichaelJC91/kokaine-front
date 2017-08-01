@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { GET_ALL_ORGANISATIONS } from '../types';
-import history from '../../config/history';
 const ROOT_URL = 'http://kokaine.staging.bid';
 
 export function getAllOrgs() {

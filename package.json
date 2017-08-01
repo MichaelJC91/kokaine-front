@@ -9,11 +9,13 @@
     "jquery-match-height": "^0.7.2",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",
+    "material-ui": "^0.18.3",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-form": "^6.8.0",
     "redux-thunk": "^2.2.0"

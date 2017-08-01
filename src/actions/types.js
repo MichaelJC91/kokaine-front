@@ -3,3 +3,4 @@ export const UNAUTH_USER = 'unauth_user';
 export const SIGNIN_USER = 'signin_user';
 export const AUTH_ERROR = 'auth_error';
 export const GET_ALL_ORGANISATIONS = 'get_all_organisations';
+export const GET_ALL_CONTACTS = 'get_all_contacts';
