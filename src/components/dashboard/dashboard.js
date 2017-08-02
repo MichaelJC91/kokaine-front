@@ -9,6 +9,8 @@ import Charts from './charts';
 import Account from './account';
 import DashboardHeader from './header';
 import history from '../../config/history'
+import CreateOrganisation from '../organisations/create_organisation';
+import EditOrganisation from '../organisations/edit_organisation';
 
 export default class Dashboard extends Component {
   render() {
@@ -22,6 +24,8 @@ export default class Dashboard extends Component {
           <div className="col-md-10 dashboard-main-section">
             <Router history={ history }>
               <Switch>
+                <Route path="/dashboard/organisation/:id/edit" component={ EditOrganisation } />
+                <Route path="/dashboard/organisation/new" component={ CreateOrganisation } />
                 <Route path="/dashboard/organisations" component={ Organisations } />
                 <Route path="/dashboard/tasks" component={ Tasks } />
                 <Route path="/dashboard/contacts" component={ Contacts } />

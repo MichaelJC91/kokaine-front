@@ -31,7 +31,7 @@ class Contacts extends Component {
   render() {
     return (
       <MuiThemeProvider>
-      <Table selectable={ false }>
+        <Table selectable={ false }>
             <TableHeader>
               <TableRow>
                 <TableHeaderColumn>ID</TableHeaderColumn>

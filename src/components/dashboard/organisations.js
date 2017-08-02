@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllOrgs } from '../../actions/organisations/index';
+import { getAllOrgs, deleteOrganisation } from '../../actions/organisations/index';
+import { selectOrg } from '../../actions/organisations/select_organisation';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import $ from 'jquery';
-// import matchHeight from 'jquery-match-height';
 
 class Organisations extends Component {
 
@@ -45,8 +44,20 @@ class Organisations extends Component {
             <div className="text-left dashboard-card-contact-info">
               <p><i className="fa fa-mobile" aria-hidden="true"></i><a href={ `tel:${org.phone}` }>{ org.phone }</a></p>
               <p><i className="fa fa-envelope" aria-hidden="true"></i><a href={ `tel:${org.phone}` }>{ org.email }</a></p>
-              <p><i className="fa fa-globe" aria-hidden="true"></i><a target="_blank" href={ `http://${org.assets[0].name}` }>{ org.assets[0].name }</a></p>
-              <Link className="btn btn-secondary btn-sm" to="#">Add Task</Link>
+              <p>
+                <i className="fa fa-globe" aria-hidden="true"></i>
+                { ( org.assets.length ?
+
+                  <a target="_blank" rel="noopener noreferrer" href={ `http://${org.assets[0].name}` }>{ org.assets[0].name }</a> :
+
+                  <span>N/A</span>
+                ) }
+                </p>
+              <div>
+                <Link onClick={() => this.props.selectOrg(org)} to={ `/dashboard/organisation/${org.id}/edit` } >Edit</Link>
+                <span> | </span>
+                <a id="delete-button" onClick={() => this.props.deleteOrganisation(org) } >Delete</a>
+              </div>
             </div>
           </div>
         </div>
@@ -74,4 +85,4 @@ function mapStateToProps(state) {
   return { orgs: state.orgs }
 }
 
-export default connect(mapStateToProps, { getAllOrgs })(Organisations);
+export default connect(mapStateToProps, { getAllOrgs, selectOrg, deleteOrganisation })(Organisations);
