@@ -21,8 +21,9 @@ class EditOrganisation extends Component {
   }
 
   onSubmit(values) {
+    let { id } = this.props.match.params;
     let { name, email, phone } = values;
-    this.props.UpdateOrg( { name, email, phone } );
+    this.props.UpdateOrg( { name, email, phone, id } );
   }
 
   render() {

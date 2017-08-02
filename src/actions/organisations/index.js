@@ -23,9 +23,14 @@ export function getAllOrgs() {
 
 export const UpdateOrg = (org) => {
   const TOKEN = localStorage.getItem('token');
+
+  let { name, email, phone } = org
+
+  console.log(newOrgData)
+
   return function(dispatch) {
 
-    axios.put(`${ROOT_URL}/api/organisations/${org.id}?token=${TOKEN}`)
+    axios.put(`${ROOT_URL}/api/organisations/${org.id}?token=${TOKEN}`, org)
       .then((response) => {
         console.log(response)
       });
