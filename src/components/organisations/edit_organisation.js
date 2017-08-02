@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { UpdateOrg } from '../../actions/organisations/index';
+import { UpdateOrg, getOrgFromID } from '../../actions/organisations/index';
 
 class EditOrganisation extends Component {
 
@@ -15,14 +15,17 @@ class EditOrganisation extends Component {
     )
   }
 
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    this.props.getOrgFromID(id);
+  }
+
   onSubmit(values) {
-    let { name, email, phone, id } = values;
-    this.props.UpdateOrg( { name, email, phone, id } );
+    let { name, email, phone } = values;
+    this.props.UpdateOrg( { name, email, phone } );
   }
 
   render() {
-
-    console.log(this)
 
     const { handleSubmit } = this.props;
 
@@ -65,9 +68,8 @@ EditOrganisation = reduxForm({
 // You have to connect() to any reducers that you wish to connect to yourself
 EditOrganisation = connect(
   state => ({
-    initialValues: state.selectedOrg || { name: 'Michael' }, // pull initial values from account reducer
-    orgs: state.orgs
-  }),{ UpdateOrg } // bind account loading action creator
+    initialValues: state.selectedOrg
+  }),{ UpdateOrg, getOrgFromID }
 )(EditOrganisation)
 
 export default EditOrganisation;

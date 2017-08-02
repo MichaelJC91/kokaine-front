@@ -8,3 +8,4 @@ export const GET_SINGLE_ORGANISATION = 'get_single_organisation';
 export const CREATE_ORGANISATION = 'create_organisation';
 export const UPDATE_ORGANISATION = 'update_organisation';
 export const DELETE_ORGANISATION = 'delete_organisation';
+export const MATCH_PARAM_ID = 'match_param_id';
