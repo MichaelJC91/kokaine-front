@@ -55,7 +55,7 @@ class EditOrganisation extends Component {
             type="tel"
             component={ this.renderField }
           />
-          <button className="btn btn-primary" type="submit">Edit Organisation</button>
+          <button className="btn btn-primary cursor-pointer" type="submit">Edit Organisation</button>
         </form>
       </div>
     )

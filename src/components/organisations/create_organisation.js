@@ -48,7 +48,7 @@ class CreateOrganisation extends Component {
             component={ this.renderField }
             placeholder="1300 batman"
           />
-          <button type="submit" className="btn btn-primary">Create New Organisation</button>
+          <button type="submit" className="btn btn-primary cursor-pointer">Create New Organisation</button>
         </form>
       </div>
     )
