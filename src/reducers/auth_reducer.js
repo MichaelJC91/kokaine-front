@@ -1,7 +1,7 @@
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../actions/types';
 
 
-function signinAuth(state = {}, action) {
+function signinAuth(state = null, action) {
   switch(action.type) {
 
     case AUTH_USER:

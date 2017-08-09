@@ -1,7 +1,7 @@
 import { GET_ALL_ORGANISATIONS, DELETE_ORGANISATION, MATCH_PARAM_ID } from '../actions/types';
 import _ from 'lodash';
 
-export default function(state = {}, action) {
+export default function(state = null, action) {
   switch(action.type) {
     case GET_ALL_ORGANISATIONS:
       return _.mapKeys(action.payload, 'id');

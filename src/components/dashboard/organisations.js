@@ -56,7 +56,7 @@ class Organisations extends Component {
               <div>
                 <Link onClick={() => this.props.selectOrg(org)} to={ `/dashboard/organisation/${org.id}/edit` } >Edit</Link>
                 <span> | </span>
-                <a id="delete-button" onClick={() => this.props.deleteOrganisation(org) } >Delete</a>
+                <a className="delete-button" onClick={() => this.props.deleteOrganisation(org) } >Delete</a>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllContacts } from '../../actions/contacts/index';
+import { getAllContacts, selectContact, deleteContact } from '../../actions/contacts/index';
 import _ from 'lodash';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {
@@ -12,18 +12,30 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Link } from 'react-router-dom';
 injectTapEventPlugin();
 
 class Contacts extends Component {
 
   componentDidMount() {
-    this.props.getAllContacts()
+    this.props.getAllContacts();
   }
 
-  renderContactList() {
+  renderContactListRow() {
     return _.map(this.props.contacts, contact => {
       return (
-        <li key={ contact.id } >{ contact.name }</li>
+        <TableRow key={contact.id}>
+          <TableRowColumn>{ contact.name }</TableRowColumn>
+          <TableRowColumn>{ contact.phone }</TableRowColumn>
+          <TableRowColumn>{ contact.email }</TableRowColumn>
+          <TableRowColumn>
+            <Link to={ `/dashboard/contacts/${contact.id}/edit` } onClick={() => this.props.selectContact(contact)}>
+              Edit Contact
+            </Link>
+            <span> | </span>
+            <span className="delete-button" onClick={() => this.props.deleteContact(contact.id)  }>Delete</span>
+          </TableRowColumn>
+        </TableRow>
       )
     })
   }
@@ -31,35 +43,17 @@ class Contacts extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <Table selectable={ false }>
-            <TableHeader>
+        <Table selectable={false}>
+            <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
-                <TableHeaderColumn>ID</TableHeaderColumn>
                 <TableHeaderColumn>Name</TableHeaderColumn>
-                <TableHeaderColumn>Status</TableHeaderColumn>
+                <TableHeaderColumn>Phone</TableHeaderColumn>
+                <TableHeaderColumn>Email</TableHeaderColumn>
+                <TableHeaderColumn>Actions</TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableRowColumn>1</TableRowColumn>
-                <TableRowColumn>John Smith</TableRowColumn>
-                <TableRowColumn>Employed</TableRowColumn>
-              </TableRow>
-              <TableRow>
-                <TableRowColumn>2</TableRowColumn>
-                <TableRowColumn>Randal White</TableRowColumn>
-                <TableRowColumn>Unemployed</TableRowColumn>
-              </TableRow>
-              <TableRow>
-                <TableRowColumn>3</TableRowColumn>
-                <TableRowColumn>Stephanie Sanders</TableRowColumn>
-                <TableRowColumn>Employed</TableRowColumn>
-              </TableRow>
-              <TableRow>
-                <TableRowColumn>4</TableRowColumn>
-                <TableRowColumn>Steve Brown</TableRowColumn>
-                <TableRowColumn>Employed</TableRowColumn>
-              </TableRow>
+            <TableBody displayRowCheckbox={false}>
+              { this.renderContactListRow() }
             </TableBody>
           </Table>
         </MuiThemeProvider>
@@ -71,4 +65,4 @@ function mapStateToProps(state) {
   return { contacts: state.contacts }
 }
 
-export default connect(mapStateToProps, { getAllContacts })(Contacts);
+export default connect(mapStateToProps, { getAllContacts, selectContact, deleteContact })(Contacts);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_ORGANISATIONS, UPDATE_ORGANISATION, DELETE_ORGANISATION, CREATE_ORGANISATION, MATCH_PARAM_ID, GET_SINGLE_ORGANISATION } from '../types';
+import { GET_ALL_ORGANISATIONS, UPDATE_ORGANISATION, DELETE_ORGANISATION, CREATE_ORGANISATION, GET_SINGLE_ORGANISATION } from '../types';
 import history from '../../config/history';
 const ROOT_URL = 'http://kokaine.staging.bid';
 
@@ -28,14 +28,10 @@ export const UpdateOrg = (org) => {
 
   let newOrgData = { name, email, phone };
 
-  console.log(newOrgData)
-
   return function(dispatch) {
 
     axios.put(`${ROOT_URL}/api/organisations/${org.id}?token=${TOKEN}`, newOrgData)
       .then((response) => {
-
-        console.log(response);
 
         const { organisation } = response.data;
 
