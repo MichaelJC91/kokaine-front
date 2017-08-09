@@ -42,8 +42,16 @@ class Contacts extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-        <Table selectable={false}>
+      <div>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-sm-12">
+              <Link className="btn btn-primary" to="/dashboard/contacts/new">Create Contact</Link>
+            </div>
+          </div>
+        </div>
+        <MuiThemeProvider>
+          <Table selectable={false}>
             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
                 <TableHeaderColumn>Name</TableHeaderColumn>
@@ -57,6 +65,7 @@ class Contacts extends Component {
             </TableBody>
           </Table>
         </MuiThemeProvider>
+      </div>
     )
   }
 }

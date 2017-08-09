@@ -12,6 +12,7 @@ import history from '../../config/history'
 import CreateOrganisation from '../organisations/create_organisation';
 import EditOrganisation from '../organisations/edit_organisation';
 import EditContact from '../contacts/edit_contact';
+import CreateContact from '../contacts/create_contact';
 
 export default class Dashboard extends Component {
   render() {
@@ -27,6 +28,7 @@ export default class Dashboard extends Component {
               <Switch>
                 <Route path="/dashboard/organisation/:id/edit" component={ EditOrganisation } />
                 <Route path="/dashboard/contacts/:id/edit" component={ EditContact } />
+                <Route path="/dashboard/contacts/new" component={ CreateContact } />
                 <Route path="/dashboard/organisation/new" component={ CreateOrganisation } />
                 <Route path="/dashboard/organisations" component={ Organisations } />
                 <Route path="/dashboard/tasks" component={ Tasks } />

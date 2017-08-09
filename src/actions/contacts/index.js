@@ -60,6 +60,7 @@ export const deleteContact = (contactID) => {
   }
 }
 
+
 export const updateContact = (contact) => {
   const TOKEN = localStorage.getItem('token');
 
