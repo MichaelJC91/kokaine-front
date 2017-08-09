@@ -1,3 +1,8 @@
+.danger-text {
+  color: #d9534f;
+  padding-top: 5px;
+  font-weight: 700; }
+
 .landing-page-container {
   height: 100%;
   background: #de6161;

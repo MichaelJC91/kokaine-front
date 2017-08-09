@@ -7,11 +7,16 @@ import { createOrganisation } from '../../actions/organisations/index';
 class CreateOrganisation extends Component {
 
   renderField(field) {
+    const { meta: { touched, error } } = field;
+    const helpText = `form-group ${ touched && error ? 'has-danger' : ''}`
     const { type, placeholder } = field;
     return(
-      <div className="form-group">
+      <div className={ helpText }>
         <label>{field.label}</label>
         <input {...field.input} type={type} placeholder={placeholder || ''} className="form-control"/>
+        <div className="danger-text">
+          { touched ? error : '' }
+        </div>
       </div>
     )
   }
@@ -55,8 +60,28 @@ class CreateOrganisation extends Component {
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  //validate inputs from values
+  if(!values.name) {
+    errors.name = 'Please Enter Name';
+  }
+
+  if(!values.email) {
+    errors.email = 'Please Enter an Email';
+  }
+
+  if(!values.phone) {
+    errors.phone = 'Please Enter a Phone Number';
+  }
+
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'createOrganisation'
 })(
   connect(null, { createOrganisation })(CreateOrganisation)
-)
+);
