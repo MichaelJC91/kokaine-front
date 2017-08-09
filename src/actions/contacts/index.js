@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_CONTACTS, GET_SINGLE_CONTACT, DELETE_CONTACT, UPDATE_CONTACT } from '../types';
+  import { GET_ALL_CONTACTS, GET_SINGLE_CONTACT, DELETE_CONTACT, UPDATE_CONTACT, CREATE_CONTACT } from '../types';
 import history from '../../config/history';
 const ROOT_URL = 'http://kokaine.staging.bid';
 
@@ -78,5 +78,24 @@ export const updateContact = (contact) => {
 
       })
       .catch(err => console.log(err))
+  }
+}
+
+export const createContact = (contact) => {
+  const TOKEN = localStorage.getItem('token');
+
+  return function(dispatch) {
+
+    axios.post(`${ROOT_URL}/api/contacts?token=${TOKEN}`, contact)
+      .then((response) => {
+
+        const { contact } = response.data;
+
+        dispatch({ type: CREATE_CONTACT, payload: contact });
+
+        history.push('/dashboard/contacts');
+
+      })
+      .catch(err => console.log(err));
   }
 }

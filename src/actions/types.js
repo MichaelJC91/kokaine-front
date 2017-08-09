@@ -7,6 +7,7 @@ export const GET_ALL_CONTACTS = 'get_all_contacts';
 export const GET_SINGLE_ORGANISATION = 'get_single_organisation';
 export const GET_SINGLE_CONTACT = 'get_single_contact';
 export const UPDATE_CONTACT = 'update_contact';
+export const CREATE_CONTACT = 'create_contact';
 export const DELETE_CONTACT = 'delete_contact';
 export const CREATE_ORGANISATION = 'create_organisation';
 export const UPDATE_ORGANISATION = 'update_organisation';

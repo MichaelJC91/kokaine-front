@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
+import { createContact } from '../../actions/contacts/index';
 
 class CreateContact extends Component {
 
@@ -16,7 +17,7 @@ class CreateContact extends Component {
   }
 
   onSubmit(values) {
-    console.log(values);
+    this.props.createContact(values);
   }
 
   render() {
@@ -32,7 +33,7 @@ class CreateContact extends Component {
             label="Name"
             type="text"
             component={ this.renderField }
-            placeholder="Wayne Industries"
+            placeholder="Bruce Wayne"
           />
           <Field
             name="email"
@@ -58,5 +59,5 @@ class CreateContact extends Component {
 export default reduxForm({
   form: 'createContact'
 })(
-  connect(null, {  })(CreateContact)
+  connect(null, { createContact })(CreateContact)
 )
