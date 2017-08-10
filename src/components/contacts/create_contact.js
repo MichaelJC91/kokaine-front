@@ -8,10 +8,15 @@ class CreateContact extends Component {
 
   renderField(field) {
     const { type, placeholder } = field;
+    const { meta: { touched, error } } = field;
+    const helpText = `form-group ${ touched && error ? 'has-danger' : ''}`
     return(
       <div className="form-group">
         <label>{field.label}</label>
         <input {...field.input} type={type} placeholder={placeholder || ''} className="form-control"/>
+        <div className="danger-text">
+          { touched ? error : '' }
+        </div>
       </div>
     )
   }
@@ -56,7 +61,27 @@ class CreateContact extends Component {
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  //validate inputs from values
+  if(!values.name) {
+    errors.name = 'Please Enter a Name';
+  }
+
+  if(!values.email) {
+    errors.email = 'Please Enter an Email';
+  }
+
+  if(!values.phone) {
+    errors.phone = 'Please Enter a Phone Number';
+  }
+
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'createContact'
 })(
   connect(null, { createContact })(CreateContact)
