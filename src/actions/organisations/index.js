@@ -97,3 +97,9 @@ export const getOrgFromID = (orgID) => {
       .catch(err => console.log(err))
   }
 }
+
+export const selectOrg = (organisation) => {
+  return function(dispatch) {
+    dispatch({ type: GET_SINGLE_ORGANISATION, payload: organisation })
+  }
+}

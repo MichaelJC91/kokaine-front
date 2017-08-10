@@ -10,7 +10,6 @@ export default function(state = {}, action ) {
     case UPDATE_CONTACT:
       return { ...state, [action.payload.id]: action.payload };
     case GET_SINGLE_CONTACT:
-      console.log(action.payload.id)
       return { ...state, [action.payload.id]: action.payload };
     default:
       return state;

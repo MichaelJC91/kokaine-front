@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { getContactFromID, updateContact } from '../../actions/contacts/index';
-import _ from 'lodash';
 
 class EditContact extends Component {
 

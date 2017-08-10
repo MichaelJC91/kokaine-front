@@ -66,11 +66,15 @@ EditOrganisation = reduxForm({
   form: 'editOrg' // a unique identifier for this form
 })(EditOrganisation)
 
+function mapStateToProps( { orgs } , ownProps ) {
+  return {
+    initialValues: orgs[ownProps.match.params.id]
+  }
+}
+
 // You have to connect() to any reducers that you wish to connect to yourself
 EditOrganisation = connect(
-  state => ({
-    initialValues: state.selectedOrg
-  }),{ UpdateOrg, getOrgFromID }
+  mapStateToProps, { UpdateOrg, getOrgFromID }
 )(EditOrganisation)
 
 export default EditOrganisation;
