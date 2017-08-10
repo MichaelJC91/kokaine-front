@@ -7,16 +7,12 @@ import { createOrganisation } from '../../actions/organisations/index';
 class CreateOrganisation extends Component {
 
   renderField(field) {
-    const { meta: { touched, error } } = field;
-    const helpText = `form-group ${ touched && error ? 'has-danger' : ''}`
     const { type, placeholder } = field;
     return(
-      <div className={ helpText }>
+      <div className="form-group">
         <label>{field.label}</label>
         <input {...field.input} type={type} placeholder={placeholder || ''} className="form-control"/>
-        <div className="danger-text">
-          { touched ? error : '' }
-        </div>
+        { field.meta.error }
       </div>
     )
   }
@@ -75,13 +71,11 @@ function validate(values) {
   if(!values.phone) {
     errors.phone = 'Please Enter a Phone Number';
   }
-
-  return errors;
 }
 
 export default reduxForm({
-  validate,
-  form: 'createOrganisation'
+  form: 'createOrganisation',
+  validate
 })(
   connect(null, { createOrganisation })(CreateOrganisation)
-);
+)

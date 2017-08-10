@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { getContactFromID, updateContact } from '../../actions/contacts/index'
+import { getContactFromID, updateContact } from '../../actions/contacts/index';
+import _ from 'lodash';
 
 class EditContact extends Component {
 
@@ -64,11 +65,17 @@ EditContact = reduxForm({
   form: 'editContact' // a unique identifier for this form
 })(EditContact)
 
+function mapStateToProps( { contacts }, ownProps ) {
+
+  return {
+    initialValues: contacts[ownProps.match.params.id]
+  }
+
+}
+
 // You have to connect() to any reducers that you wish to connect to yourself
 EditContact = connect(
-  state => ({
-    initialValues: state.activeContact
-  }),{ updateContact, getContactFromID }
+  mapStateToProps, { updateContact, getContactFromID }
 )(EditContact)
 
 export default EditContact;

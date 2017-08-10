@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { GET_ALL_CONTACTS, DELETE_CONTACT, UPDATE_CONTACT } from '../actions/types';
+import { GET_ALL_CONTACTS, DELETE_CONTACT, UPDATE_CONTACT, GET_SINGLE_CONTACT } from '../actions/types';
 
 export default function(state = {}, action ) {
   switch(action.type) {
@@ -8,7 +8,10 @@ export default function(state = {}, action ) {
     case DELETE_CONTACT:
       return _.omit(state, action.payload);
     case UPDATE_CONTACT:
-      return { ...state, [action.payload.id]: action.payload }
+      return { ...state, [action.payload.id]: action.payload };
+    case GET_SINGLE_CONTACT:
+      console.log(action.payload.id)
+      return { ...state, [action.payload.id]: action.payload };
     default:
       return state;
   }

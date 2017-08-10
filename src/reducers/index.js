@@ -11,8 +11,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   orgs: orgsReducer,
   contacts: contactsReducer,
-  activeContact: active_contact_reducer,
-  selectedOrg: active_organisation_reducer
+  // activeContact: active_contact_reducer,
+  // selectedOrg: active_organisation_reducer
 });
 
 export default rootReducer;
