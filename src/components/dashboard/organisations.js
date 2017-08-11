@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllOrgs, deleteOrganisation } from '../../actions/organisations/index';
-import { selectOrg } from '../../actions/organisations/select_organisation';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
@@ -46,6 +45,7 @@ class Organisations extends Component {
               <p><i className="fa fa-envelope" aria-hidden="true"></i><a href={ `tel:${org.phone}` }>{ org.email }</a></p>
               <p>
                 <i className="fa fa-globe" aria-hidden="true"></i>
+                { console.log(org) }
                 { ( org.assets.length ?
 
                   <a target="_blank" rel="noopener noreferrer" href={ `http://${org.assets[0].name}` }>{ org.assets[0].name }</a> :
@@ -82,7 +82,8 @@ class Organisations extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return { orgs: state.orgs }
 }
 
-export default connect(mapStateToProps, { getAllOrgs, selectOrg, deleteOrganisation })(Organisations);
+export default connect(mapStateToProps, { getAllOrgs, deleteOrganisation })(Organisations);

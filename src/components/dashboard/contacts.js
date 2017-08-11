@@ -29,6 +29,7 @@ class Contacts extends Component {
           <TableRowColumn>{ contact.phone }</TableRowColumn>
           <TableRowColumn>{ contact.email }</TableRowColumn>
           <TableRowColumn>
+            { console.log(this.props.contacts) }
             <Link to={ `/dashboard/contacts/${contact.id}/edit` } onClick={() => this.props.selectContact(contact)}>
               Edit Contact
             </Link>

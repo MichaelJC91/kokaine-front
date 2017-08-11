@@ -21,9 +21,7 @@ class EditOrganisation extends Component {
   }
 
   onSubmit(values) {
-    let { id } = this.props.match.params;
-    let { name, email, phone } = values;
-    this.props.UpdateOrg( { name, email, phone, id } );
+    this.props.UpdateOrg(values);
   }
 
   render() {
@@ -67,6 +65,7 @@ EditOrganisation = reduxForm({
 })(EditOrganisation)
 
 function mapStateToProps( { orgs } , ownProps ) {
+  console.log(orgs);
   return {
     initialValues: orgs[ownProps.match.params.id]
   }

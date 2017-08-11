@@ -90,6 +90,8 @@ export const getOrgFromID = (orgID) => {
     axios.get(`${ROOT_URL}/api/organisations/${orgID}?token=${TOKEN}`)
       .then(response => {
 
+        console.log(response)
+
         const { organisation } = response.data;
 
         dispatch({ type: GET_SINGLE_ORGANISATION, payload: organisation })
