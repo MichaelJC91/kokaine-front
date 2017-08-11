@@ -82,7 +82,8 @@
     border-bottom-color: rgba(240, 240, 240, 0.5); }
 
 .dashboard-main-section {
-  padding-top: 15px; }
+  padding-top: 15px;
+  background: rgba(240, 240, 240, 0.5); }
 
 .dashboard-card-layout {
   margin-bottom: 15px;

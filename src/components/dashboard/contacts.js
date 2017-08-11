@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllContacts, selectContact, deleteContact } from '../../actions/contacts/index';
 import _ from 'lodash';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import {
   Table,
   TableBody,
@@ -13,11 +12,10 @@ import {
 } from 'material-ui/Table';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Link } from 'react-router-dom';
-injectTapEventPlugin();
 
 class Contacts extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getAllContacts();
   }
 
