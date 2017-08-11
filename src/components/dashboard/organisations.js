@@ -45,7 +45,6 @@ class Organisations extends Component {
               <p><i className="fa fa-envelope" aria-hidden="true"></i><a href={ `tel:${org.phone}` }>{ org.email }</a></p>
               <p>
                 <i className="fa fa-globe" aria-hidden="true"></i>
-                { console.log(org) }
                 { ( org.assets.length ?
 
                   <a target="_blank" rel="noopener noreferrer" href={ `http://${org.assets[0].name}` }>{ org.assets[0].name }</a> :
