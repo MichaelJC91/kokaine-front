@@ -82,7 +82,6 @@ class Organisations extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return { orgs: state.orgs }
 }
 
