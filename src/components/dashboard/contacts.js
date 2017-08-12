@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllContacts, selectContact, deleteContact } from '../../actions/contacts/index';
 import _ from 'lodash';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Link } from 'react-router-dom';
 
@@ -23,17 +16,17 @@ class Contacts extends Component {
     return _.map(this.props.contacts, contact => {
       return (
         <TableRow key={contact.id}>
-          <TableRowColumn>{ contact.name }</TableRowColumn>
-          <TableRowColumn>{ contact.phone }</TableRowColumn>
-          <TableRowColumn>{ contact.email }</TableRowColumn>
-          <TableRowColumn>
+          <TableCell>{ contact.name }</TableCell>
+          <TableCell>{ contact.phone }</TableCell>
+          <TableCell>{ contact.email }</TableCell>
+          <TableCell>
             { console.log(this.props.contacts) }
             <Link to={ `/dashboard/contacts/${contact.id}/edit` } onClick={() => this.props.selectContact(contact)}>
               Edit Contact
             </Link>
             <span> | </span>
             <span className="delete-button" onClick={() => this.props.deleteContact(contact.id)  }>Delete</span>
-          </TableRowColumn>
+          </TableCell>
         </TableRow>
       )
     })
@@ -51,14 +44,14 @@ class Contacts extends Component {
         </div>
         <MuiThemeProvider>
           <Table selectable={false}>
-            <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+            <TableHead displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
-                <TableHeaderColumn>Name</TableHeaderColumn>
-                <TableHeaderColumn>Phone</TableHeaderColumn>
-                <TableHeaderColumn>Email</TableHeaderColumn>
-                <TableHeaderColumn>Actions</TableHeaderColumn>
+                <TableCell>Name</TableCell>
+                <TableCell>Phone</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Actions</TableCell>
               </TableRow>
-            </TableHeader>
+            </TableHead>
             <TableBody displayRowCheckbox={false}>
               { this.renderContactListRow() }
             </TableBody>

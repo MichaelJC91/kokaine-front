@@ -24,3 +24,6 @@ export const GET_SINGLE_TASK = 'get_single_task';
 export const CREATE_TASK = 'create_task';
 export const UPDATE_TASK = 'update_task';
 export const DELETE_TASK = 'delete_task';
+
+//Effects Types
+export const EXPAND_CONTENT = 'expand_content';

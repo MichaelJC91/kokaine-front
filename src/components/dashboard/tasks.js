@@ -3,16 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import { getAllTasks } from '../../actions/tasks/index';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
-import FlatButton from 'material-ui/FlatButton';
-import CreateIcon from 'material-ui/svg-icons/content/create';
+import { expandContent } from '../../actions/effects/index';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Button from 'material-ui/Button';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Tasks extends Component {
@@ -25,11 +18,10 @@ class Tasks extends Component {
     return _.map(this.props.tasks, task => {
       return (
         <TableRow key={task.id}>
-          <TableRowColumn>{ task.name }</TableRowColumn>
-          <TableRowColumn>{ task.description }</TableRowColumn>
-          <TableRowColumn>{ task.asset.name }</TableRowColumn>
-          <TableRowColumn>Status</TableRowColumn>
-          <TableRowColumn><Link to="/dashboard"><FlatButton icon={ <CreateIcon /> } label="Edit" labelPosition="after" ></FlatButton></Link></TableRowColumn>
+          <TableCell>{ task.name }</TableCell>
+          <TableCell>{ task.description }</TableCell>
+          <TableCell>{ task.asset.name }</TableCell>
+          <TableCell>Status</TableCell>
         </TableRow>
       )
     })
@@ -45,15 +37,15 @@ class Tasks extends Component {
           <div className="col-md-12">
             <MuiThemeProvider>
               <Table selectable={false}>
-                <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                <TableHead>
                   <TableRow>
-                    <TableHeaderColumn>Task</TableHeaderColumn>
-                    <TableHeaderColumn>Description</TableHeaderColumn>
-                    <TableHeaderColumn>Belongs To</TableHeaderColumn>
-                    <TableHeaderColumn>Status</TableHeaderColumn>
-                    <TableHeaderColumn></TableHeaderColumn>
+                    <TableCell>Task</TableCell>
+                    <TableCell>Description</TableCell>
+                    <TableCell>Belongs To</TableCell>
+                    <TableCell>Status</TableCell>
+                    <TableCell></TableCell>
                   </TableRow>
-                </TableHeader>
+                </TableHead>
                 <TableBody displayRowCheckbox={false} stripedRows={true}>
                   { this.renderListLayout() }
                 </TableBody>
@@ -70,4 +62,4 @@ function mapStateToProps( state ) {
   return { tasks: state.tasks }
 }
 
-export default connect(mapStateToProps, { getAllTasks })(Tasks);
+export default connect(mapStateToProps, { getAllTasks, expandContent })(Tasks);

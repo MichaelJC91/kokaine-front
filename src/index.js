@@ -20,6 +20,7 @@ import jwtDecode from 'jwt-decode';
 // Global Store
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
+console.log(store.getState())
 
 // JWT Token
 const token = localStorage.getItem('token');
