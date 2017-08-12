@@ -40,7 +40,6 @@ export const getContactFromID = (contactID) => {
 
 // action called when clicked on "edit contact" in contacts component
 export const selectContact = (contact) => {
-  console.log(contact)
   return function(dispatch) {
     dispatch({ type: GET_SINGLE_CONTACT, payload: contact })
   }
@@ -83,6 +82,7 @@ export const updateContact = (contact) => {
 
 export const createContact = (contact) => {
   const TOKEN = localStorage.getItem('token');
+  console.log(contact)
 
   return function(dispatch) {
 

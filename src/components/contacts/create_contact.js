@@ -28,21 +28,11 @@ class CreateContact extends Component {
   }
 
   renderDropDown(field) {
-    const { name, label, ID, organisations  } = field;
-    _.map(organisations, org => {
-      console.log(org)
-    })
+    const { name, label, IDname, organisations  } = field;
 
     return (
       <div className="form-group">
-        <label htmlFor={ ID }>{ label }</label>
-        <select className="form-control" id="sel1">
-          { _.map(organisations, org => {
-            return (
-              <option key={ org.id } value={ org.id }>{ org.name }</option>
-            )
-          }) }
-        </select>
+        <label htmlFor={ IDname }>{ label }</label>
       </div>
     )
   }
@@ -80,13 +70,19 @@ class CreateContact extends Component {
             component={ this.renderField }
             placeholder="1300 batman"
           />
-          <Field
-          name="selectOrg"
-          label="Select Organisation"
-          component={ this.renderDropDown }
-          ID="org"
-          organisations={ this.props.orgs }
-          />
+          <div className="form-group">
+            <label>Select Organisation:</label>
+            <div>
+              <Field name="organisation" component="select" className="form-control">
+                <option/>
+                { _.map(this.props.orgs, org => {
+                  return (
+                    <option key={ org.id } value={ org.id } >{ org.name }</option>
+                  )
+                }) }
+              </Field>
+            </div>
+          </div>
           <button type="submit" className="btn btn-primary cursor-pointer">Create New Contact</button>
         </form>
       </div>
@@ -114,7 +110,6 @@ function validate(values) {
 }
 
 function mapStateToProps( { orgs } ) {
-  console.log(orgs)
   return { orgs: orgs }
 }
 
