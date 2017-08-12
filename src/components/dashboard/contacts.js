@@ -20,7 +20,6 @@ class Contacts extends Component {
           <TableCell>{ contact.phone }</TableCell>
           <TableCell>{ contact.email }</TableCell>
           <TableCell>
-            { console.log(this.props.contacts) }
             <Link to={ `/dashboard/contacts/${contact.id}/edit` } onClick={() => this.props.selectContact(contact)}>
               Edit Contact
             </Link>
@@ -42,21 +41,19 @@ class Contacts extends Component {
             </div>
           </div>
         </div>
-        <MuiThemeProvider>
-          <Table selectable={false}>
-            <TableHead displaySelectAll={false} adjustForCheckbox={false}>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody displayRowCheckbox={false}>
-              { this.renderContactListRow() }
-            </TableBody>
-          </Table>
-        </MuiThemeProvider>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Phone</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            { this.renderContactListRow() }
+          </TableBody>
+        </Table>
       </div>
     )
   }

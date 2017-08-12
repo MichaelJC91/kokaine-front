@@ -4,13 +4,15 @@ import authReducer from './auth_reducer';
 import orgsReducer from './organisation_reducer';
 import contactsReducer from './contacts_reducer';
 import tasksReducer from './tasks_reducer';
+import effectsReducer from './effects_reducer';
 
 const rootReducer = combineReducers({
   form: formReducer,
   auth: authReducer,
   orgs: orgsReducer,
   contacts: contactsReducer,
-  tasks: tasksReducer
+  tasks: tasksReducer,
+  effects: effectsReducer
 });
 
 export default rootReducer;

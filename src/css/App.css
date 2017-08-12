@@ -140,6 +140,9 @@
 .pointer-cursor, .delete-button {
   cursor: pointer; }
 
+.no-outline {
+  outline: none !important; }
+
 body, html, #root, [data-reactroot], .homeBodyClass {
   height: 100%;
   min-height: 100%;

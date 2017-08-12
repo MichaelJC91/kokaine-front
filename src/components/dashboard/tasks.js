@@ -5,13 +5,22 @@ import _ from 'lodash';
 import { getAllTasks } from '../../actions/tasks/index';
 import { expandContent } from '../../actions/effects/index';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Icon from 'material-ui/Icon';
+import IconButton from 'material-ui/IconButton';
+import Create from 'material-ui-icons/Create';
 import Button from 'material-ui/Button';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+import Collapse from 'material-ui/transitions/Collapse';
 
 class Tasks extends Component {
 
   componentWillMount() {
     this.props.getAllTasks();
+  }
+
+  handleExpandClick() {
+    this.props.expandContent();
   }
 
   renderListLayout() {
@@ -22,6 +31,13 @@ class Tasks extends Component {
           <TableCell>{ task.description }</TableCell>
           <TableCell>{ task.asset.name }</TableCell>
           <TableCell>Status</TableCell>
+          <TableCell>
+            <div>
+              <IconButton aria-label="Edit" color="primary" className="no-outline">
+                <Create />
+              </IconButton>
+            </div>
+          </TableCell>
         </TableRow>
       )
     })
@@ -35,22 +51,19 @@ class Tasks extends Component {
             <h3>Task List</h3>
           </div>
           <div className="col-md-12">
-            <MuiThemeProvider>
-              <Table selectable={false}>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Task</TableCell>
-                    <TableCell>Description</TableCell>
-                    <TableCell>Belongs To</TableCell>
-                    <TableCell>Status</TableCell>
-                    <TableCell></TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody displayRowCheckbox={false} stripedRows={true}>
-                  { this.renderListLayout() }
-                </TableBody>
-              </Table>
-            </MuiThemeProvider>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Task</TableCell>
+                  <TableCell>Description</TableCell>
+                  <TableCell>Belongs To</TableCell>
+                  <TableCell>Status</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                { this.renderListLayout() }
+              </TableBody>
+            </Table>
           </div>
         </div>
       </div>
@@ -59,7 +72,7 @@ class Tasks extends Component {
 }
 
 function mapStateToProps( state ) {
-  return { tasks: state.tasks }
+  return { tasks: state.tasks, effects: state.effects }
 }
 
 export default connect(mapStateToProps, { getAllTasks, expandContent })(Tasks);

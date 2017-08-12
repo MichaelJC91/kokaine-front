@@ -1,8 +1,10 @@
-import { EXPAND_CONTENT } from '../action/types';
+import { EXPAND_CONTENT } from '../actions/types';
 
-export default function( state = { }, action ) {
+export default function( state = { expanded: false }, action ) {
   switch(action.type) {
     case EXPAND_CONTENT:
-      // return { expanded: action.payload }
+      return { expanded: !state.expanded };
+    default:
+      return state;
   }
 }
