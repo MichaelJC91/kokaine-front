@@ -82,7 +82,6 @@ export const updateContact = (contact) => {
 
 export const createContact = (contact) => {
   const TOKEN = localStorage.getItem('token');
-  console.log(contact)
 
   return function(dispatch) {
 

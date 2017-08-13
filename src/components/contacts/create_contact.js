@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { createContact } from '../../actions/contacts/index';
-import { getAllOrgs } from '../../actions/organisations/index';
+import { getAllOrgs, attachContact } from '../../actions/organisations/index';
 import _ from 'lodash';
 
 class CreateContact extends Component {
@@ -27,18 +27,14 @@ class CreateContact extends Component {
     )
   }
 
-  renderDropDown(field) {
-    const { name, label, IDname, organisations  } = field;
-
-    return (
-      <div className="form-group">
-        <label htmlFor={ IDname }>{ label }</label>
-      </div>
-    )
-  }
-
   onSubmit(values) {
-    this.props.createContact(values);
+    const { organisationID } = values;
+
+    if(!organisationID) {
+      this.props.createContact(values);
+    } else {
+      this.props.attachContact(values);
+    }
   }
 
   render() {
@@ -73,7 +69,7 @@ class CreateContact extends Component {
           <div className="form-group">
             <label>Select Organisation:</label>
             <div>
-              <Field name="organisation" component="select" className="form-control">
+              <Field name="organisationID" component="select" className="form-control">
                 <option/>
                 { _.map(this.props.orgs, org => {
                   return (
@@ -117,5 +113,5 @@ export default reduxForm({
   validate,
   form: 'createContact'
 })(
-  connect(mapStateToProps, { createContact, getAllOrgs })(CreateContact)
+  connect(mapStateToProps, { createContact, getAllOrgs, attachContact })(CreateContact)
 )
