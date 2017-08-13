@@ -12,9 +12,10 @@ function signinAuth(state = {}, action) {
 
     case AUTH_ERROR:
       return { ...state, error: action.payload }
-  }
 
-  return state;
+    default:
+      return state;
+  }
 }
 
 export default signinAuth;

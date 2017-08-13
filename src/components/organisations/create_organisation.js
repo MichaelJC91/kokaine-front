@@ -12,6 +12,7 @@ class CreateOrganisation extends Component {
       <div className="form-group">
         <label>{field.label}</label>
         <input {...field.input} type={type} placeholder={placeholder || ''} className="form-control"/>
+        { field.meta.error }
       </div>
     )
   }
@@ -55,8 +56,26 @@ class CreateOrganisation extends Component {
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  //validate inputs from values
+  if(!values.name) {
+    errors.name = 'Please Enter Name';
+  }
+
+  if(!values.email) {
+    errors.email = 'Please Enter an Email';
+  }
+
+  if(!values.phone) {
+    errors.phone = 'Please Enter a Phone Number';
+  }
+}
+
 export default reduxForm({
-  form: 'createOrganisation'
+  form: 'createOrganisation',
+  validate
 })(
   connect(null, { createOrganisation })(CreateOrganisation)
 )

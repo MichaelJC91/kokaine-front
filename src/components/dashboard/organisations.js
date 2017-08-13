@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllOrgs, deleteOrganisation } from '../../actions/organisations/index';
-import { selectOrg } from '../../actions/organisations/select_organisation';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
@@ -56,7 +55,7 @@ class Organisations extends Component {
               <div>
                 <Link onClick={() => this.props.selectOrg(org)} to={ `/dashboard/organisation/${org.id}/edit` } >Edit</Link>
                 <span> | </span>
-                <a id="delete-button" onClick={() => this.props.deleteOrganisation(org) } >Delete</a>
+                <a className="delete-button" onClick={() => this.props.deleteOrganisation(org) } >Delete</a>
               </div>
             </div>
           </div>
@@ -85,4 +84,4 @@ function mapStateToProps(state) {
   return { orgs: state.orgs }
 }
 
-export default connect(mapStateToProps, { getAllOrgs, selectOrg, deleteOrganisation })(Organisations);
+export default connect(mapStateToProps, { getAllOrgs, deleteOrganisation })(Organisations);

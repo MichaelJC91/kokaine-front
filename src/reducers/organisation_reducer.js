@@ -1,4 +1,4 @@
-import { GET_ALL_ORGANISATIONS, DELETE_ORGANISATION, MATCH_PARAM_ID } from '../actions/types';
+import { GET_ALL_ORGANISATIONS, DELETE_ORGANISATION, GET_SINGLE_ORGANISATION, UPDATE_ORGANISATION } from '../actions/types';
 import _ from 'lodash';
 
 export default function(state = {}, action) {
@@ -9,8 +9,11 @@ export default function(state = {}, action) {
     case DELETE_ORGANISATION:
       return _.omit(state, action.payload);
 
-    case MATCH_PARAM_ID:
-      return action.payload;
+    case GET_SINGLE_ORGANISATION:
+      return { ...state, [action.payload.id]: action.payload };
+
+    case UPDATE_ORGANISATION:
+      return { ...state, [action.payload.id]: action.payload }
 
     default:
       return state;

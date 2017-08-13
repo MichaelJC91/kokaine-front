@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_ORGANISATIONS, UPDATE_ORGANISATION, DELETE_ORGANISATION, CREATE_ORGANISATION, MATCH_PARAM_ID, GET_SINGLE_ORGANISATION } from '../types';
+import { GET_ALL_ORGANISATIONS, UPDATE_ORGANISATION, DELETE_ORGANISATION, CREATE_ORGANISATION, GET_SINGLE_ORGANISATION, CREATE_CONTACT } from '../types';
 import history from '../../config/history';
 const ROOT_URL = 'http://kokaine.staging.bid';
 
@@ -28,14 +28,10 @@ export const UpdateOrg = (org) => {
 
   let newOrgData = { name, email, phone };
 
-  console.log(newOrgData)
-
   return function(dispatch) {
 
     axios.put(`${ROOT_URL}/api/organisations/${org.id}?token=${TOKEN}`, newOrgData)
       .then((response) => {
-
-        console.log(response);
 
         const { organisation } = response.data;
 
@@ -94,10 +90,40 @@ export const getOrgFromID = (orgID) => {
     axios.get(`${ROOT_URL}/api/organisations/${orgID}?token=${TOKEN}`)
       .then(response => {
 
+        console.log(response)
+
         const { organisation } = response.data;
 
         dispatch({ type: GET_SINGLE_ORGANISATION, payload: organisation })
       })
       .catch(err => console.log(err))
   }
+}
+
+export const selectOrg = (organisation) => {
+  return function(dispatch) {
+    dispatch({ type: GET_SINGLE_ORGANISATION, payload: organisation })
+  }
+}
+
+export const attachContact = (contact) => {
+  const TOKEN = localStorage.getItem('token');
+  const { name, email, phone, organisationID } = contact;
+  console.log(contact)
+
+  return function(dispatch) {
+
+    axios.patch(`${ROOT_URL}/api/organisations/${organisationID}/attachNewContact?token=${TOKEN}`, { name, email, phone })
+      .then(response => {
+        const { organisation } = response.data;
+
+        dispatch({ type: UPDATE_ORGANISATION, payload: organisation });
+        history.push('/dashboard/contacts');
+        dispatch({ type: CREATE_CONTACT });
+
+      })
+      .catch(err => console.log(err))
+
+  }
+
 }

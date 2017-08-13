@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { UpdateOrg, getOrgFromID } from '../../actions/organisations/index';
+import { getContactFromID, updateContact } from '../../actions/contacts/index';
 
-class EditOrganisation extends Component {
+class EditContact extends Component {
+
+  componentWillMount() {
+    const {id} = this.props.match.params;
+    this.props.getContactFromID(id);
+  }
 
   renderField(field) {
     const { type, placeholder } = field;
@@ -15,13 +20,8 @@ class EditOrganisation extends Component {
     )
   }
 
-  componentWillMount() {
-    const { id } = this.props.match.params;
-    this.props.getOrgFromID(id);
-  }
-
   onSubmit(values) {
-    this.props.UpdateOrg(values);
+    this.props.updateContact(values);
   }
 
   render() {
@@ -32,48 +32,49 @@ class EditOrganisation extends Component {
       return <div>Loading...</div>
     }
 
-    return (
+    return(
       <div>
         <form onSubmit={ handleSubmit(this.onSubmit.bind(this) ) }>
           <Field
             name="name"
-            label="Organisation Name"
+            label="Contact Name"
             type="text"
             component={ this.renderField }
           />
           <Field
             name="email"
-            label="Organisation Email"
+            label="Contact Email"
             type="email"
             component={ this.renderField }
           />
           <Field
             name="phone"
-            label="Organisation Phone Number"
+            label="Contact Phone Number"
             type="tel"
             component={ this.renderField }
           />
-          <button className="btn btn-primary cursor-pointer" type="submit">Edit Organisation</button>
+          <button className="btn btn-primary cursor-pointer" type="submit">Edit Contact</button>
         </form>
       </div>
     )
   }
 }
 
-EditOrganisation = reduxForm({
-  form: 'editOrg' // a unique identifier for this form
-})(EditOrganisation)
+EditContact = reduxForm({
+  form: 'editContact' // a unique identifier for this form
+})(EditContact)
 
-function mapStateToProps( { orgs } , ownProps ) {
-  console.log(orgs);
+function mapStateToProps( { contacts }, ownProps ) {
+
   return {
-    initialValues: orgs[ownProps.match.params.id]
+    initialValues: contacts[ownProps.match.params.id]
   }
+
 }
 
 // You have to connect() to any reducers that you wish to connect to yourself
-EditOrganisation = connect(
-  mapStateToProps, { UpdateOrg, getOrgFromID }
-)(EditOrganisation)
+EditContact = connect(
+  mapStateToProps, { updateContact, getContactFromID }
+)(EditContact)
 
-export default EditOrganisation;
+export default EditContact;
