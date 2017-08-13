@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AUTH_USER, AUTH_ERROR, UNAUTH_USER } from './types';
 import history from '../config/history';
-const ROOT_URL = 'https://kokaine.staging.bid';
+const ROOT_URL = 'http://kokaine.staging.bid';
 
 export function signinUser(values) {
   return function (dispatch) {

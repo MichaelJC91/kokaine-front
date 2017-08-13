@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_ALL_ORGANISATIONS, UPDATE_ORGANISATION, DELETE_ORGANISATION, CREATE_ORGANISATION, GET_SINGLE_ORGANISATION, CREATE_CONTACT } from '../types';
 import history from '../../config/history';
-const ROOT_URL = 'https://kokaine.staging.bid';
+const ROOT_URL = 'http://kokaine.staging.bid';
 
 export function getAllOrgs() {
 
