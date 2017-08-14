@@ -58,6 +58,7 @@ class Tasks extends Component {
                   <TableCell>Description</TableCell>
                   <TableCell>Belongs To</TableCell>
                   <TableCell>Status</TableCell>
+                  <TableCell></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
