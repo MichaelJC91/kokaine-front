@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_ALL_CONTACTS, GET_SINGLE_CONTACT, DELETE_CONTACT, UPDATE_CONTACT, CREATE_CONTACT } from '../types';
 import history from '../../config/history';
-const ROOT_URL = 'http://kokaine.staging.bid';
+const ROOT_URL = 'https://kokaine.staging.bid';
 
 export function getAllContacts() {
   return function(dispatch) {

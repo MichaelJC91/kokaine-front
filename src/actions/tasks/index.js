@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_ALL_TASKS, GET_SINGLE_TASK, CREATE_TASK, DELETE_TASK, UPDATE_TASK } from '../types';
 import history from '../../config/history';
-const ROOT_URL = 'http://kokaine.staging.bid';
+const ROOT_URL = 'https://kokaine.staging.bid';
 
 export const getAllTasks = () => {
 
