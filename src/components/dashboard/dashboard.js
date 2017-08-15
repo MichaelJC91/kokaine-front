@@ -13,6 +13,7 @@ import CreateOrganisation from '../organisations/create_organisation';
 import EditOrganisation from '../organisations/edit_organisation';
 import EditContact from '../contacts/edit_contact';
 import CreateContact from '../contacts/create_contact';
+import EditTask from '../tasks/edit_task';
 
 export default class Dashboard extends Component {
   render() {
@@ -27,6 +28,7 @@ export default class Dashboard extends Component {
             <Router history={ history }>
               <Switch>
                 <Route path="/dashboard/organisation/:id/edit" component={ EditOrganisation } />
+                <Route path="/dashboard/tasks/:id/edit" component={ EditTask } />
                 <Route path="/dashboard/contacts/:id/edit" component={ EditContact } />
                 <Route path="/dashboard/contacts/new" component={ CreateContact } />
                 <Route path="/dashboard/organisation/new" component={ CreateOrganisation } />

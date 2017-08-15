@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import { getAllTasks } from '../../actions/tasks/index';
+import { getAllTasks, selectTask } from '../../actions/tasks/index';
 import { expandContent } from '../../actions/effects/index';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
@@ -34,7 +34,9 @@ class Tasks extends Component {
           <TableCell>
             <div>
               <IconButton aria-label="Edit" color="primary" className="no-outline">
-                <Create />
+                <Link to={ `/dashboard/tasks/${task.id}/edit` } onClick={() => this.props.selectTask(task)}>
+                  <Create />
+                </Link>
               </IconButton>
             </div>
           </TableCell>
@@ -76,4 +78,4 @@ function mapStateToProps( state ) {
   return { tasks: state.tasks, effects: state.effects }
 }
 
-export default connect(mapStateToProps, { getAllTasks, expandContent })(Tasks);
+export default connect(mapStateToProps, { getAllTasks, expandContent ,selectTask })(Tasks);

@@ -43,7 +43,6 @@ export const selectContact = (contact) => {
   return function(dispatch) {
     dispatch({ type: GET_SINGLE_CONTACT, payload: contact })
   }
-
 }
 
 export const deleteContact = (contactID) => {

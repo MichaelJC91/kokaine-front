@@ -24,3 +24,52 @@ export const getAllTasks = () => {
   }
 
 }
+
+export const getTaskFromID = (taskID) => {
+  const TOKEN = localStorage.getItem('token');
+
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/api/tasks/${taskID}?token=${TOKEN}`)
+      .then(response => {
+
+        //Extract task object from response
+        const { task } = response.data;
+
+        // Dispatch single task to reducer
+        dispatch({ type: GET_SINGLE_TASK, payload: task });
+
+      })
+      .catch(err => console.log(err));
+  }
+}
+
+export const updateTask = (task) => {
+  const TOKEN = localStorage.getItem('token');
+
+  console.log(task)
+
+  const { name, description } = task;
+  const updatedTaskData = { name, description };
+
+  return function(dispatch) {
+    axios.put(`${ROOT_URL}/api/tasks/${task.id}?token=${TOKEN}`, updatedTaskData)
+      .then((response) => {
+
+        console.log(response)
+
+        const { task } = response.data;
+        dispatch({ type: UPDATE_TASK, payload: task })
+
+        history.push('/dashboard/tasks');
+
+      })
+      .catch(err => console.log(err))
+  }
+}
+
+// action called when clicked on "edit contact" in contacts component
+export const selectTask = (task) => {
+  return function(dispatch) {
+    dispatch({ type: GET_SINGLE_TASK, payload: task })
+  }
+}
