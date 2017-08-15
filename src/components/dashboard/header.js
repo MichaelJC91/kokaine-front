@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { signoutUser } from '../../actions/index';
+import { connect } from 'react-redux';
 
 class DashboardHeader extends Component {
   render() {
@@ -10,7 +12,7 @@ class DashboardHeader extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <Link className="nav-link" to="/signout">Signout</Link>
+                <Link className="nav-link" to="/" onClick={ () => this.props.signoutUser() }>Signout</Link>
               </li>
             </ul>
           </div>
@@ -20,4 +22,4 @@ class DashboardHeader extends Component {
   }
 }
 
-export default DashboardHeader;
+export default connect(null, { signoutUser })(DashboardHeader);
