@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import { getAllTasks, selectTask } from '../../actions/tasks/index';
 import { expandContent } from '../../actions/effects/index';
+import Button from 'material-ui/Button';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Icon from 'material-ui/Icon';
 import IconButton from 'material-ui/IconButton';
 import Create from 'material-ui-icons/Create';
-import Button from 'material-ui/Button';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import Collapse from 'material-ui/transitions/Collapse';
 
@@ -50,7 +50,9 @@ class Tasks extends Component {
       <div>
         <div className="row">
           <div className="col-md-12">
-            <h3>Task List</h3>
+            <Link to="/dashboard/tasks/new">
+              <Button raised color="primary">Create Task</Button>
+            </Link>
           </div>
           <div className="col-md-12">
             <Table>

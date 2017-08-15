@@ -46,16 +46,12 @@ export const getTaskFromID = (taskID) => {
 export const updateTask = (task) => {
   const TOKEN = localStorage.getItem('token');
 
-  console.log(task)
-
   const { name, description } = task;
   const updatedTaskData = { name, description };
 
   return function(dispatch) {
     axios.put(`${ROOT_URL}/api/tasks/${task.id}?token=${TOKEN}`, updatedTaskData)
       .then((response) => {
-
-        console.log(response)
 
         const { task } = response.data;
         dispatch({ type: UPDATE_TASK, payload: task })
@@ -71,5 +67,24 @@ export const updateTask = (task) => {
 export const selectTask = (task) => {
   return function(dispatch) {
     dispatch({ type: GET_SINGLE_TASK, payload: task })
+  }
+}
+
+export const createTask = (task) => {
+  const TOKEN = localStorage.getItem('token');
+
+  return function(dispatch) {
+
+    axios.post(`${ROOT_URL}/api/tasks?token=${TOKEN}`, task)
+      .then((response) => {
+
+        const { task } = response.data;
+
+        dispatch({ type: CREATE_TASK, payload: task });
+
+        history.push('/dashboard/tasks');
+
+      })
+      .catch(err => console.log(err));
   }
 }
