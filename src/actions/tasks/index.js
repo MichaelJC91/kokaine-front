@@ -4,6 +4,7 @@ import history from '../../config/history';
 const ROOT_URL = 'https://kokaine.staging.bid';
 
 export const getAllTasks = () => {
+  console.log(this)
 
   const TOKEN = localStorage.getItem('token');
 
@@ -23,4 +24,69 @@ export const getAllTasks = () => {
     .catch(err => console.log(err));
   }
 
+}
+
+export const getTaskFromID = (taskID) => {
+  const TOKEN = localStorage.getItem('token');
+
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/api/tasks/${taskID}?token=${TOKEN}`)
+      .then(response => {
+
+        //Extract task object from response
+        const { task } = response.data;
+
+        // Dispatch single task to reducer
+        dispatch({ type: GET_SINGLE_TASK, payload: task });
+
+      })
+      .catch(err => console.log(err));
+  }
+}
+
+export const updateTask = (task) => {
+  const TOKEN = localStorage.getItem('token');
+
+  const { name, description } = task;
+  const updatedTaskData = { name, description };
+
+  return function(dispatch) {
+    axios.put(`${ROOT_URL}/api/tasks/${task.id}?token=${TOKEN}`, updatedTaskData)
+      .then((response) => {
+
+        const { task } = response.data;
+        dispatch({ type: UPDATE_TASK, payload: task })
+
+        history.push('/dashboard/tasks');
+
+      })
+      .catch(err => console.log(err))
+  }
+}
+
+// action called when clicked on "edit contact" in contacts component
+export const selectTask = (task) => {
+  console.log(task)
+  return function(dispatch) {
+    dispatch({ type: GET_SINGLE_TASK, payload: task })
+  }
+}
+
+export const createTask = (task) => {
+  const TOKEN = localStorage.getItem('token');
+
+  return function(dispatch) {
+
+    axios.post(`${ROOT_URL}/api/tasks?token=${TOKEN}`, task)
+      .then((response) => {
+
+        const { task } = response.data;
+
+        dispatch({ type: CREATE_TASK, payload: task });
+
+        history.push('/dashboard/tasks');
+
+      })
+      .catch(err => console.log(err));
+  }
 }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { getContactFromID, updateContact } from '../../actions/contacts/index';
+import { getTaskFromID, updateTask } from '../../actions/tasks/index';
 
-class EditContact extends Component {
+class EditTask extends Component {
 
   componentWillMount() {
     const {id} = this.props.match.params;
-    this.props.getContactFromID(id);
+    this.props.getTaskFromID(id);
   }
 
   renderField(field) {
@@ -35,7 +35,7 @@ class EditContact extends Component {
   }
 
   onSubmit(values) {
-    this.props.updateContact(values);
+    this.props.updateTask(values);
   }
 
   render() {
@@ -48,51 +48,43 @@ class EditContact extends Component {
 
     return(
       <div>
-        <form onSubmit={ handleSubmit(this.onSubmit.bind(this) ) }>
+        <form onSubmit={ handleSubmit(this.onSubmit.bind(this) )} >
           <Field
             name="name"
-            label="Contact Name"
+            component={ this.renderField }
             type="text"
-            component={ this.renderField }
+            label="Task Name"
           />
           <Field
-            name="email"
-            label="Contact Email"
-            type="email"
+            name="description"
             component={ this.renderField }
+            type="text"
+            label="Description"
           />
           <Field
-            name="phone"
-            label="Contact Phone Number"
-            type="tel"
-            component={ this.renderField }
-          />
-          <Field
-            name="organisationID"
+            name="asset_id"
             component={ this.renderSelectField }
-            label="Select Organisation">
+            label="Belongs To">
           </Field>
-          <button className="btn btn-primary cursor-pointer" type="submit">Edit Contact</button>
+          <button className="btn btn-primary cursor-pointer" type="submit">Save</button>
         </form>
       </div>
     )
   }
 }
 
-EditContact = reduxForm({
-  form: 'editContact' // a unique identifier for this form
-})(EditContact)
-
-function mapStateToProps( { contacts }, ownProps ) {
+function mapStateToProps({ tasks }, ownProps) {
   return {
-    initialValues: contacts[ownProps.match.params.id]
+    initialValues: tasks[ownProps.match.params.id]
   }
-
 }
 
-// You have to connect() to any reducers that you wish to connect to yourself
-EditContact = connect(
-  mapStateToProps, { updateContact, getContactFromID }
-)(EditContact)
+EditTask = reduxForm({
+  form: 'editTask'
+})(EditTask);
 
-export default EditContact;
+EditTask = connect(
+  mapStateToProps, { getTaskFromID, updateTask }
+)(EditTask)
+
+export default EditTask;

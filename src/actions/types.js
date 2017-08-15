@@ -27,3 +27,10 @@ export const DELETE_TASK = 'delete_task';
 
 //Effects Types
 export const EXPAND_CONTENT = 'expand_content';
+
+//Assets Types
+export const GET_ALL_ASSETS = 'get_all_assets';
+export const GET_SINGLE_ASSET = 'get_single_asset';
+export const CREATE_ASSET = 'create_asset';
+export const UPDATE_ASSET = 'update_asset';
+export const DELETE_ASSET = 'delete_asset';

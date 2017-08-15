@@ -5,6 +5,7 @@ import orgsReducer from './organisation_reducer';
 import contactsReducer from './contacts_reducer';
 import tasksReducer from './tasks_reducer';
 import effectsReducer from './effects_reducer';
+import assetsReducer from './assets_reducer';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   orgs: orgsReducer,
   contacts: contactsReducer,
   tasks: tasksReducer,
-  effects: effectsReducer
+  effects: effectsReducer,
+  assets: assetsReducer 
 });
 
 export default rootReducer;

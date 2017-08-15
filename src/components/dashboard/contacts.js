@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getAllContacts, selectContact, deleteContact } from '../../actions/contacts/index';
 import _ from 'lodash';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Link } from 'react-router-dom';
 
 class Contacts extends Component {
