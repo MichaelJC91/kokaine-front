@@ -20,6 +20,20 @@ class EditTask extends Component {
     )
   }
 
+  renderSelectField( { input, label, type, meta: { touched, error }, children } ) {
+    return(
+      <div className="form-group">
+        <label>{label}</label>
+        <div className="danger-text">
+          <select {...input} className="form-control">
+            {children}
+          </select>
+          {touched && error && <span>{error}</span>}
+        </div>
+    </div>
+    )
+  }
+
   onSubmit(values) {
     this.props.updateTask(values);
   }
@@ -47,6 +61,11 @@ class EditTask extends Component {
             type="text"
             label="Description"
           />
+          <Field
+            name="asset_id"
+            component={ this.renderSelectField }
+            label="Belongs To">
+          </Field>
           <button className="btn btn-primary cursor-pointer" type="submit">Save</button>
         </form>
       </div>

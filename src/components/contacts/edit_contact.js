@@ -20,6 +20,20 @@ class EditContact extends Component {
     )
   }
 
+  renderSelectField( { input, label, type, meta: { touched, error }, children } ) {
+    return(
+      <div className="form-group">
+        <label>{label}</label>
+        <div className="danger-text">
+          <select {...input} className="form-control">
+            {children}
+          </select>
+          {touched && error && <span>{error}</span>}
+        </div>
+    </div>
+    )
+  }
+
   onSubmit(values) {
     this.props.updateContact(values);
   }
@@ -53,6 +67,11 @@ class EditContact extends Component {
             type="tel"
             component={ this.renderField }
           />
+          <Field
+            name="organisationID"
+            component={ this.renderSelectField }
+            label="Select Organisation">
+          </Field>
           <button className="btn btn-primary cursor-pointer" type="submit">Edit Contact</button>
         </form>
       </div>
@@ -65,7 +84,6 @@ EditContact = reduxForm({
 })(EditContact)
 
 function mapStateToProps( { contacts }, ownProps ) {
-
   return {
     initialValues: contacts[ownProps.match.params.id]
   }
