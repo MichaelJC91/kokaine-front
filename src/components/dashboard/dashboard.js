@@ -11,6 +11,7 @@ import Account from './account';
 import DashboardHeader from './header';
 import history from '../../config/history'
 import CreateOrganisation from '../organisations/create_organisation';
+import CreatePage from '../pages/create_page';
 import EditOrganisation from '../organisations/edit_organisation';
 import EditContact from '../contacts/edit_contact';
 import CreateContact from '../contacts/create_contact';
@@ -35,6 +36,7 @@ export default class Dashboard extends Component {
                 <Route path="/dashboard/contacts/new" component={ CreateContact } />
                 <Route path="/dashboard/tasks/new" component={ CreateTask } />
                 <Route path="/dashboard/organisation/new" component={ CreateOrganisation } />
+                <Route path="/dashboard/pages/new" component={ CreatePage } />
                 <Route path="/dashboard/organisations" component={ Organisations } />
                 <Route path="/dashboard/assets" component={ Assets } />
                 <Route path="/dashboard/tasks" component={ Tasks } />
