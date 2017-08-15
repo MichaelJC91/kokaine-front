@@ -4,6 +4,7 @@ import Sidebar from './sidebar';
 import MainDashboard from './main_dashboard';
 import Organisations from './organisations';
 import Tasks from './tasks';
+import Assets from './assets';
 import Contacts from './contacts';
 import Charts from './charts';
 import Account from './account';
@@ -35,6 +36,7 @@ export default class Dashboard extends Component {
                 <Route path="/dashboard/tasks/new" component={ CreateTask } />
                 <Route path="/dashboard/organisation/new" component={ CreateOrganisation } />
                 <Route path="/dashboard/organisations" component={ Organisations } />
+                <Route path="/dashboard/assets" component={ Assets } />
                 <Route path="/dashboard/tasks" component={ Tasks } />
                 <Route path="/dashboard/contacts" component={ Contacts } />
                 <Route path="/dashboard/charts" component={ Charts } />

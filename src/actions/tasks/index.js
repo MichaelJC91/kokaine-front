@@ -4,6 +4,7 @@ import history from '../../config/history';
 const ROOT_URL = 'https://kokaine.staging.bid';
 
 export const getAllTasks = () => {
+  console.log(this)
 
   const TOKEN = localStorage.getItem('token');
 
@@ -65,6 +66,7 @@ export const updateTask = (task) => {
 
 // action called when clicked on "edit contact" in contacts component
 export const selectTask = (task) => {
+  console.log(task)
   return function(dispatch) {
     dispatch({ type: GET_SINGLE_TASK, payload: task })
   }
