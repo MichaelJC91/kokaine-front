@@ -6,8 +6,10 @@ import { getTaskFromID, updateTask } from '../../actions/tasks/index';
 class EditTask extends Component {
 
   componentWillMount() {
-    const {id} = this.props.match.params;
-    this.props.getTaskFromID(id);
+    if(!this.props.initialValues) {
+      const {id} = this.props.match.params;
+      this.props.getTaskFromID(id);
+    }
   }
 
   renderField(field) {
