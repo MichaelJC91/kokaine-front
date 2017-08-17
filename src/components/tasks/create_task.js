@@ -79,6 +79,24 @@ class CreateContact extends Component {
               )
             }) }
           </Field>
+          <Field
+            name="status_id"
+            component={ this.renderSelectField }
+            label="Status">
+            <option />
+            <option value="1">Open</option>
+            <option value="2">In Progress</option>
+            <option value="3">Pending</option>
+            <option value="4">Closed</option>
+          </Field>
+          <Field
+            name="user_id"
+            component={ this.renderSelectField }
+            label="Assigned To">
+            <option />
+            <option value="1">Peter Reginald</option>
+            <option value="2">Michael Carniato</option>
+          </Field>
           <Button raised color="primary" type="submit">Create</Button>
         </form>
       </div>
@@ -102,8 +120,8 @@ function validate(values) {
     errors.description = 'Please Enter a Description for the Task';
   }
 
-  if(!values.asset) {
-    errors.asset = 'Please Choose an Asset';
+  if(!values.asset_id) {
+    errors.asset_id = 'Please Choose an Asset';
   }
 
   return errors;

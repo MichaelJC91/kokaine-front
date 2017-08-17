@@ -10,6 +10,8 @@ export function signinUser(values) {
     axios.post(`${ROOT_URL}/api/user/signin`, values)
       .then(response => {
 
+        console.log(response)
+
         // - Update state to indicate user is authenticated
         dispatch({ type: AUTH_USER });
 
@@ -32,6 +34,8 @@ export function signupUser(values) {
     // Submit email/password to server
     axios.post(`${ROOT_URL}/api/user`, values)
       .then(response => {
+
+        console.log(response)
 
         // - Update state to indicate user is authenticated
         dispatch({ type: AUTH_USER });
