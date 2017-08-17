@@ -25,12 +25,12 @@ class Tasks extends Component {
 
   renderListLayout() {
     return _.map(this.props.tasks, task => {
-      console.log("Tasks Component:", task)
       return (
         <TableRow key={task.id}>
           <TableCell>{ task.id }</TableCell>
           <TableCell>{ task.name }</TableCell>
           <TableCell>{ task.description }</TableCell>
+          <TableCell>{ task.user.name }</TableCell>
           <TableCell>{ task.asset.name }</TableCell>
           <TableCell>{ task.status.name }</TableCell>
           <TableCell>
@@ -63,6 +63,7 @@ class Tasks extends Component {
                   <TableCell>ID</TableCell>
                   <TableCell>Task</TableCell>
                   <TableCell>Description</TableCell>
+                  <TableCell>Assigned To</TableCell>
                   <TableCell>Belongs To</TableCell>
                   <TableCell>Status</TableCell>
                   <TableCell>Actions</TableCell>
