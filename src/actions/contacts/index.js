@@ -26,7 +26,7 @@ export const getContactFromID = (contactID) => {
   return function(dispatch) {
     axios.get(`${ROOT_URL}/api/contacts/${contactID}?token=${TOKEN}`)
       .then(response => {
-
+        console.log("Contact Response:", response)
         //Extract contact object from response
         const { contact } = response.data;
 

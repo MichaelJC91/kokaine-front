@@ -28,10 +28,13 @@ export const getAllTasks = () => {
 
 export const getTaskFromID = (taskID) => {
   const TOKEN = localStorage.getItem('token');
+  console.log("TaskID Action:", taskID);
 
   return function(dispatch) {
     axios.get(`${ROOT_URL}/api/tasks/${taskID}?token=${TOKEN}`)
       .then(response => {
+
+        console.log("TaskID response:", response)
 
         //Extract task object from response
         const { task } = response.data;

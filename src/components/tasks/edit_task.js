@@ -6,10 +6,8 @@ import { getTaskFromID, updateTask } from '../../actions/tasks/index';
 class EditTask extends Component {
 
   componentWillMount() {
-    if(!this.props.initialValues) {
-      const {id} = this.props.match.params;
-      this.props.getTaskFromID(id);
-    }
+    const {id} = this.props.match.params;
+    this.props.getTaskFromID(id);
   }
 
   renderField(field) {
@@ -75,15 +73,16 @@ class EditTask extends Component {
   }
 }
 
-function mapStateToProps({ tasks }, ownProps) {
-  return {
-    initialValues: tasks[ownProps.match.params.id]
-  }
-}
-
 EditTask = reduxForm({
   form: 'editTask'
 })(EditTask);
+
+function mapStateToProps(state, ownProps) {
+  console.log(state.tasks);
+  return {
+    initialValues: state.tasks[ownProps.match.params.id]
+  }
+}
 
 EditTask = connect(
   mapStateToProps, { getTaskFromID, updateTask }

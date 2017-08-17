@@ -25,12 +25,14 @@ class Tasks extends Component {
 
   renderListLayout() {
     return _.map(this.props.tasks, task => {
+      console.log("Tasks Component:", task)
       return (
         <TableRow key={task.id}>
+          <TableCell>{ task.id }</TableCell>
           <TableCell>{ task.name }</TableCell>
           <TableCell>{ task.description }</TableCell>
           <TableCell>{ task.asset.name }</TableCell>
-          <TableCell>Status</TableCell>
+          <TableCell>{ task.status.name }</TableCell>
           <TableCell>
             <div>
               <IconButton aria-label="Edit" color="primary" className="no-outline">
@@ -58,11 +60,12 @@ class Tasks extends Component {
             <Table>
               <TableHead>
                 <TableRow>
+                  <TableCell>ID</TableCell>
                   <TableCell>Task</TableCell>
                   <TableCell>Description</TableCell>
                   <TableCell>Belongs To</TableCell>
                   <TableCell>Status</TableCell>
-                  <TableCell></TableCell>
+                  <TableCell>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -77,6 +80,7 @@ class Tasks extends Component {
 }
 
 function mapStateToProps( state ) {
+  console.log("Tasks:", state)
   return { tasks: state.tasks, effects: state.effects }
 }
 
