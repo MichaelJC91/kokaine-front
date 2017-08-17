@@ -83,7 +83,6 @@ class CreateContact extends Component {
             name="status_id"
             component={ this.renderSelectField }
             label="Status">
-            <option />
             <option value="1">Open</option>
             <option value="2">In Progress</option>
             <option value="3">Pending</option>
@@ -105,7 +104,10 @@ class CreateContact extends Component {
 }
 
 function mapStateToProps( { assets } ) {
-  return { assets }
+  return {
+    assets,
+    initialValues: { status_id: "1" }
+  }
 }
 
 function validate(values) {
@@ -124,12 +126,20 @@ function validate(values) {
     errors.asset_id = 'Please Choose an Asset';
   }
 
+  if(!values.user_id) {
+    errors.user_id = 'Please Assign a User';
+  }
+
   return errors;
 }
 
-export default reduxForm({
+CreateContact = reduxForm({
   form: 'createContact',
   validate
-})(
-  connect(mapStateToProps, { getAllAssets, createTask })(CreateContact)
-);
+})(CreateContact);
+
+CreateContact = connect(
+  mapStateToProps, { getAllAssets, createTask }
+)(CreateContact);
+
+export default CreateContact;

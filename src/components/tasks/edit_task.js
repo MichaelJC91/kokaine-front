@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { getTaskFromID, updateTask } from '../../actions/tasks/index';
+import { getAllAssets } from '../../actions/assets/index';
+import _ from 'lodash';
 
 class EditTask extends Component {
 
   componentWillMount() {
-    const {id} = this.props.match.params;
-    this.props.getTaskFromID(id);
+    this.props.getAllAssets();
+    if(!this.props.initialValues) {
+      const {id} = this.props.match.params;
+      this.props.getTaskFromID(id);
+    }
   }
 
   renderField(field) {
@@ -65,6 +70,28 @@ class EditTask extends Component {
             name="asset_id"
             component={ this.renderSelectField }
             label="Belongs To">
+            { _.map(this.props.assets, asset => {
+              return (
+                <option key={ asset.id } value={ asset.id } >{ asset.name }</option>
+              )
+            }) }
+          </Field>
+          <Field
+            name="status_id"
+            component={ this.renderSelectField }
+            label="Status">
+            <option value="1">Open</option>
+            <option value="2">In Progress</option>
+            <option value="3">Pending</option>
+            <option value="4">Closed</option>
+          </Field>
+          <Field
+            name="user_id"
+            component={ this.renderSelectField }
+            label="Assigned To">
+            <option />
+            <option value="1">Peter Reginald</option>
+            <option value="2">Michael Carniato</option>
           </Field>
           <button className="btn btn-primary cursor-pointer" type="submit">Save</button>
         </form>
@@ -77,15 +104,31 @@ EditTask = reduxForm({
   form: 'editTask'
 })(EditTask);
 
-function mapStateToProps(state, ownProps) {
-  console.log(state.tasks);
-  return {
-    initialValues: state.tasks[ownProps.match.params.id]
+function mapStateToProps({ tasks, assets }, ownProps) {
+
+  if(tasks[ownProps.match.params.id]) {
+
+    const { name, description, asset_id, status_id, user_id, id  } = tasks[ownProps.match.params.id];
+    return {
+      tasks,
+      assets,
+      initialValues: {
+        name,
+        description,
+        asset_id,
+        status_id,
+        user_id,
+        id
+      }
+    }
   }
+
+  return { assets }
+
 }
 
 EditTask = connect(
-  mapStateToProps, { getTaskFromID, updateTask }
+  mapStateToProps, { getTaskFromID, updateTask, getAllAssets }
 )(EditTask)
 
 export default EditTask;

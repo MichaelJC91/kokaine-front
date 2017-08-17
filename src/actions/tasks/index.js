@@ -4,7 +4,6 @@ import history from '../../config/history';
 const ROOT_URL = 'https://kokaine.staging.bid';
 
 export const getAllTasks = () => {
-  console.log(this)
 
   const TOKEN = localStorage.getItem('token');
 
@@ -28,13 +27,10 @@ export const getAllTasks = () => {
 
 export const getTaskFromID = (taskID) => {
   const TOKEN = localStorage.getItem('token');
-  console.log("TaskID Action:", taskID);
 
   return function(dispatch) {
     axios.get(`${ROOT_URL}/api/tasks/${taskID}?token=${TOKEN}`)
       .then(response => {
-
-        console.log("TaskID response:", response)
 
         //Extract task object from response
         const { task } = response.data;
@@ -50,15 +46,17 @@ export const getTaskFromID = (taskID) => {
 export const updateTask = (task) => {
   const TOKEN = localStorage.getItem('token');
 
-  const { name, description } = task;
-  const updatedTaskData = { name, description };
+  const { name, description, status_id, user_id, asset_id } = task;
+  const updatedTaskData = { name, description, status_id, user_id, asset_id };
+  console.log("updatedTaskData", updatedTaskData)
 
   return function(dispatch) {
     axios.put(`${ROOT_URL}/api/tasks/${task.id}?token=${TOKEN}`, updatedTaskData)
       .then((response) => {
 
         const { task } = response.data;
-        dispatch({ type: UPDATE_TASK, payload: task })
+        console.log("Task response:", task)
+        dispatch({ type: GET_ALL_TASKS })
 
         history.push('/dashboard/tasks');
 
@@ -69,7 +67,6 @@ export const updateTask = (task) => {
 
 // action called when clicked on "edit contact" in contacts component
 export const selectTask = (task) => {
-  console.log(task)
   return function(dispatch) {
     dispatch({ type: GET_SINGLE_TASK, payload: task })
   }

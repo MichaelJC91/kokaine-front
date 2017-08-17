@@ -81,7 +81,6 @@ class Tasks extends Component {
 }
 
 function mapStateToProps( state ) {
-  console.log("Tasks:", state)
   return { tasks: state.tasks, effects: state.effects }
 }
 

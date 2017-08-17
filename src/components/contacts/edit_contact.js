@@ -84,6 +84,7 @@ EditContact = reduxForm({
 })(EditContact)
 
 function mapStateToProps( { contacts }, ownProps ) {
+  console.log(contacts)
   return {
     initialValues: contacts[ownProps.match.params.id]
   }
