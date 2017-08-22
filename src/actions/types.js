@@ -34,3 +34,6 @@ export const GET_SINGLE_ASSET = 'get_single_asset';
 export const CREATE_ASSET = 'create_asset';
 export const UPDATE_ASSET = 'update_asset';
 export const DELETE_ASSET = 'delete_asset';
+
+//Tabs Types
+export const SELECT_TAB = 'select_tabs';

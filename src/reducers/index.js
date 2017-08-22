@@ -6,6 +6,7 @@ import contactsReducer from './contacts_reducer';
 import tasksReducer from './tasks_reducer';
 import effectsReducer from './effects_reducer';
 import assetsReducer from './assets_reducer';
+import tabsReducer from './tabs_reducer';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   contacts: contactsReducer,
   tasks: tasksReducer,
   effects: effectsReducer,
-  assets: assetsReducer 
+  assets: assetsReducer,
+  tabs: tabsReducer 
 });
 
 export default rootReducer;

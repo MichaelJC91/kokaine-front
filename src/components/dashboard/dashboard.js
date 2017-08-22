@@ -11,6 +11,7 @@ import Account from './account';
 import DashboardHeader from './header';
 import history from '../../config/history'
 import CreateOrganisation from '../organisations/create_organisation';
+import SingleOrganisation from '../organisations/single_organisation';
 import CreatePage from '../pages/create_page';
 import EditOrganisation from '../organisations/edit_organisation';
 import EditContact from '../contacts/edit_contact';
@@ -21,7 +22,11 @@ import CreateTask from '../tasks/create_task';
 export default class Dashboard extends Component {
 
   componentWillMount() {
-    document.body.style.background = "rgba(240, 240, 240, 0.5)"
+    document.body.style.background = "rgba(240, 240, 240, 0.5)";
+  }
+
+  componentWillUnMount() {
+    document.body.style.background = null;
   }
 
   render() {
@@ -38,6 +43,7 @@ export default class Dashboard extends Component {
                 <Route path="/dashboard/organisation/:id/edit" component={ EditOrganisation } />
                 <Route path="/dashboard/tasks/:id/edit" component={ EditTask } />
                 <Route path="/dashboard/contacts/:id/edit" component={ EditContact } />
+                <Route path="/dashboard/organisation/:id" component={ SingleOrganisation } />
                 <Route path="/dashboard/contacts/new" component={ CreateContact } />
                 <Route path="/dashboard/tasks/new" component={ CreateTask } />
                 <Route path="/dashboard/organisation/new" component={ CreateOrganisation } />

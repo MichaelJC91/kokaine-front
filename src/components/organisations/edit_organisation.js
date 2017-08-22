@@ -65,7 +65,6 @@ EditOrganisation = reduxForm({
 })(EditOrganisation)
 
 function mapStateToProps( { orgs } , ownProps ) {
-  console.log(orgs);
   return {
     initialValues: orgs[ownProps.match.params.id]
   }
