@@ -34,7 +34,9 @@
   margin-bottom: 10px; }
 
 .dashboard-header-wrapper {
-  padding: 0; }
+  padding: 0;
+  background: #ffffff;
+  z-index: 10; }
   .dashboard-header-wrapper nav {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4); }
 
@@ -42,6 +44,7 @@
   height: 100%; }
 
 .dashboard-sidebar {
+  background: #ffffff;
   padding: 0;
   box-shadow: 9px -3px 10px -12px rgba(0, 0, 0, 0.4);
   border-right: 1px solid rgba(240, 240, 240, 0.5); }
@@ -82,8 +85,7 @@
     border-bottom-color: rgba(240, 240, 240, 0.5); }
 
 .dashboard-main-section {
-  padding-top: 15px;
-  background: rgba(240, 240, 240, 0.5); }
+  padding-top: 15px; }
 
 .dashboard-card-layout {
   margin-bottom: 15px;
@@ -142,6 +144,9 @@
 
 .no-outline {
   outline: none !important; }
+
+.marginBottom {
+  margin-bottom: 20px; }
 
 body, html, #root, [data-reactroot], .homeBodyClass {
   height: 100%;

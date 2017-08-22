@@ -12,6 +12,12 @@ import IconButton from 'material-ui/IconButton';
 import Create from 'material-ui-icons/Create';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import Collapse from 'material-ui/transitions/Collapse';
+import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
+
+const tableRowWidth = {
+  maxWidth: 400
+}
 
 class Tasks extends Component {
 
@@ -27,9 +33,8 @@ class Tasks extends Component {
     return _.map(this.props.tasks, task => {
       return (
         <TableRow key={task.id}>
-          <TableCell>{ task.id }</TableCell>
           <TableCell>{ task.name }</TableCell>
-          <TableCell>{ task.description }</TableCell>
+          <TableCell style={ { maxWidth: 250 } }>{ task.description }</TableCell>
           <TableCell>{ task.user.name }</TableCell>
           <TableCell>{ task.asset.name }</TableCell>
           <TableCell>{ task.status.name }</TableCell>
@@ -50,17 +55,13 @@ class Tasks extends Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <div className="col-md-12">
-            <Link to="/dashboard/tasks/new">
-              <Button raised color="primary">Create Task</Button>
-            </Link>
-          </div>
-          <div className="col-md-12">
+        <Link to="/dashboard/tasks/new">
+          <Button raised color="primary" className="marginBottom">Create Task</Button>
+        </Link>
+          <Paper>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>ID</TableCell>
                   <TableCell>Task</TableCell>
                   <TableCell>Description</TableCell>
                   <TableCell>Assigned To</TableCell>
@@ -73,9 +74,8 @@ class Tasks extends Component {
                 { this.renderListLayout() }
               </TableBody>
             </Table>
-          </div>
+          </Paper>
         </div>
-      </div>
     )
   }
 }
