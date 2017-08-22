@@ -145,8 +145,20 @@
 .no-outline {
   outline: none !important; }
 
+.MuiGrid-spacing-xs-8-42 {
+  width: 100% !important; }
+
+.singleMeta {
+  border-top: 3px solid rgba(221, 221, 221, 0.55); }
+
 .marginBottom {
   margin-bottom: 20px; }
+
+.paddingAll {
+  padding: 20px; }
+
+.noMargin {
+  margin: 0 !important; }
 
 body, html, #root, [data-reactroot], .homeBodyClass {
   height: 100%;
