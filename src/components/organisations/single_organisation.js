@@ -12,6 +12,7 @@ import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui-icons/Delete';
 import Create from 'material-ui-icons/Create';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 import _ from 'lodash';
 
 const noMargin = { margin: 0 };
@@ -74,7 +75,7 @@ class SingleOrganisation extends Component {
               Created:
             </Typography>
             <Typography type="body1">
-              Sometime
+              { console.log(org) }
             </Typography>
           </Grid>
           <Grid item xs={3}>
