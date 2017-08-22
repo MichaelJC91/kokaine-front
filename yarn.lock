@@ -5158,6 +5158,10 @@ react-jss@^7.0.2:
     prop-types "^15.5.8"
     theming "^1.1.0"
 
+react-moment@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.6.4.tgz#5e531d47ad7b0bff6f6b7175093e98659f5e667b"
+
 react-redux@^5.0.5:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.5.tgz#f8e8c7b239422576e52d6b7db06439469be9846a"
