@@ -35,7 +35,7 @@ class Organisations extends Component {
           <div className="dashboard-card-layout d-flex flex-column text-center">
             <div className="dashboard-card-name-wrapper">
               <h1>{ this.companyBadge(org.name) }</h1>
-              <h5>{ org.name }</h5>
+              <Link to={ `/dashboard/organisation/${org.id}` }><h5>{ org.name }</h5></Link>
             </div>
             <div className="dashboard-card-location-wrapper">
               <h6><i className="fa fa-map-marker" aria-hidden="true"></i>Melbourne, Australia</h6>

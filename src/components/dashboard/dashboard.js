@@ -21,7 +21,7 @@ import CreateTask from '../tasks/create_task';
 export default class Dashboard extends Component {
 
   componentWillMount() {
-    document.body.style.backgroundColor = "rgba(240, 240, 240, 0.5)"
+    document.body.style.background = "rgba(240, 240, 240, 0.5)"
   }
 
   render() {
